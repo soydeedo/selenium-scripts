@@ -36,7 +36,7 @@ sudo apt-get update
 sudo apt-get install -y google-chrome-stable
  
 # Chromedriver
-wget https://chromedriver.storage.googleapis.com/2.25/chromedriver_linux64.zip
+wget https://chromedriver.storage.googleapis.com/2.33/chromedriver_linux64.zip
 unzip chromedriver_linux64.zip
 chmod +x chromedriver
 sudo mv -f chromedriver /usr/local/share/chromedriver
@@ -98,8 +98,8 @@ sudo systemctl start x11vnc
 # Selenium
 sudo mkdir -p /var/log/selenium /var/lib/selenium
 sudo chmod 777 /var/log/selenium
-sudo wget http://selenium-release.storage.googleapis.com/2.45/selenium-server-standalone-2.45.0.jar -P /var/lib/selenium/
-sudo ln -s /var/lib/selenium/selenium-server-standalone-2.45.0.jar /var/lib/selenium/selenium-server.jar
+sudo wget http://selenium-release.storage.googleapis.com/3.7/selenium-server-standalone-3.7.1.jar -P /var/lib/selenium/
+sudo ln -s /var/lib/selenium/selenium-server-standalone-3.7.1.jar /var/lib/selenium/selenium-server.jar
 sudo sh -c 'cat > /etc/systemd/system/selenium.service << ENDOFPASTA
 [Unit]
 Description=Selenium Standalone Server
@@ -108,7 +108,7 @@ After=xvfb.service
 [Service]
 Environment=DISPLAY=:90
 Environment=DBUS_SESSION_BUS_ADDRESS=/dev/null
-ExecStart=/sbin/start-stop-daemon -c selenium --start --background --pidfile /var/run/selenium.pid --make-pidfile --exec /usr/bin/java -- -jar /var/lib/selenium/selenium-server.jar -Dwebdriver.chrome.driver=/usr/local/share/chromedriver -Djava.security.egd=file:/dev/./urandom -log /var/log/selenium/selenium.log -port 4444
+ExecStart=/sbin/start-stop-daemon -c selenium --start --background --pidfile /var/run/selenium.pid --make-pidfile --exec /usr/bin/java -- -Dwebdriver.chrome.driver=/usr/local/share/chromedriver -Djava.security.egd=file:/dev/./urandom -jar /var/lib/selenium/selenium-server.jar -log /var/log/selenium/selenium.log -port 4444
 Type=forking
 PIDFile=/var/run/selenium.pid
 
