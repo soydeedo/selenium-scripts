@@ -36,7 +36,7 @@ sudo apt-get update
 sudo apt-get install -y google-chrome-stable
  
 # Chromedriver
-wget https://chromedriver.storage.googleapis.com/2.33/chromedriver_linux64.zip
+wget https://chromedriver.storage.googleapis.com/2.35/chromedriver_linux64.zip
 unzip chromedriver_linux64.zip
 chmod +x chromedriver
 sudo mv -f chromedriver /usr/local/share/chromedriver
@@ -98,8 +98,8 @@ sudo systemctl start x11vnc
 # Selenium
 sudo mkdir -p /var/log/selenium /var/lib/selenium
 sudo chmod 777 /var/log/selenium
-sudo wget http://selenium-release.storage.googleapis.com/3.7/selenium-server-standalone-3.7.1.jar -P /var/lib/selenium/
-sudo ln -s /var/lib/selenium/selenium-server-standalone-3.7.1.jar /var/lib/selenium/selenium-server.jar
+sudo wget http://selenium-release.storage.googleapis.com/3.8/selenium-server-standalone-3.8.1.jar -P /var/lib/selenium/
+sudo ln -s /var/lib/selenium/selenium-server-standalone-3.8.1.jar /var/lib/selenium/selenium-server.jar
 sudo sh -c 'cat > /etc/systemd/system/selenium.service << ENDOFPASTA
 [Unit]
 Description=Selenium Standalone Server
